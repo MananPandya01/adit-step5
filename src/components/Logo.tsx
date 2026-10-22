@@ -1,16 +1,29 @@
 export const APP_NAME = "ADIT Career Bridge";
 
-export function Logo({ size = 32 }: { size?: number }) {
+/**
+ * Brand logo: the exact ADIT image, shown as-is (never redrawn or recoloured).
+ * The source image has a white background, so it sits in a neutral rounded
+ * container that reads on both light and dark surfaces.
+ */
+export function Logo({ size = 34, full = true }: { size?: number; full?: boolean }) {
   return (
-    <span className="inline-flex items-center gap-2 text-[17px] font-bold text-foreground">
-      <svg width={size} height={size} viewBox="0 0 40 40" aria-hidden>
-        <circle cx="20" cy="20" r="18" className="fill-primary" />
-        <path d="M11 14l4 13 5-9 5 9 4-13" fill="none" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" className="stroke-primary-foreground" />
-      </svg>
-      <span className="inline-flex flex-col leading-none">
-        <span>ADIT</span>
-        <span className="text-[11px] font-semibold tracking-wide text-muted-foreground">Career Bridge</span>
-      </span>
+    <span className="inline-flex items-center gap-2.5">
+      <img
+        src="/logo-nav.png"
+        alt="ADIT Career Bridge logo"
+        width={size}
+        height={size}
+        className="rounded-md bg-white ring-1 ring-border/60 object-cover shrink-0"
+        style={{ width: size, height: size }}
+      />
+      {full && (
+        <span className="inline-flex flex-col leading-none">
+          <span className="text-[17px] font-bold text-foreground">ADIT</span>
+          <span className="text-[11px] font-semibold tracking-wide text-muted-foreground">
+            Career Bridge
+          </span>
+        </span>
+      )}
     </span>
   );
 }
